@@ -23,21 +23,26 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = false)
     private String title;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false, unique = false)
+    @Column(nullable = true, unique = false)
     private LocalDateTime dueDate;
 
     @Column(nullable = false, unique = false)
+    private LocalDateTime createdAt;
+
+    @Column(nullable = true, unique = false)
     private LocalDateTime completedAt;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = false)
     private TaskStatus status;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = false)
     private TaskPriority taskPriority;
 
@@ -48,19 +53,18 @@ public class Task {
 
     @PrePersist
     public void prePersist() {
-        this.completedAt = LocalDateTime.now();
-        this.dueDate = LocalDateTime.now().plusDays(7);
+        this.createdAt = LocalDateTime.now();
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(dueDate, task.dueDate) && Objects.equals(completedAt, task.completedAt) && status == task.status && taskPriority == task.taskPriority && Objects.equals(tasks, task.tasks);
+        return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(dueDate, task.dueDate) && Objects.equals(createdAt, task.createdAt) && Objects.equals(completedAt, task.completedAt) && status == task.status && taskPriority == task.taskPriority && Objects.equals(tasks, task.tasks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, dueDate, completedAt, status, taskPriority, tasks);
+        return Objects.hash(id, title, description, dueDate, createdAt, completedAt, status, taskPriority, tasks);
     }
 }

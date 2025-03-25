@@ -18,8 +18,6 @@ public class TaskResponseDto {
     private UUID id;
     private String title;
     private String description;
-    private LocalDateTime dueDate;
-    private LocalDateTime completedAt;
     private TaskStatus status;
     private TaskPriority taskPriority;
 }
