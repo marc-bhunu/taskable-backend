@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 
 @Service
 @RequiredArgsConstructor
@@ -34,4 +37,10 @@ public class TaskServiceImpl  implements TaskService {
         task.setTasks(taskList);
         return taskRepository.save(task);
     }
+
+    @Override
+    public List<Task> findByTaskListTasksById(UUID taskListId) {
+        return  taskRepository.findByTasks_Id(taskListId);
+    }
+
 }
