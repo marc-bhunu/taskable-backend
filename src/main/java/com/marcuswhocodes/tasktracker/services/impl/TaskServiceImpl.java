@@ -29,13 +29,15 @@ public class TaskServiceImpl  implements TaskService {
 
     @Override
     public Task createTask(CreateTaskRequest createTaskRequest) {
-        Task task = new Task();
-        task.setTitle(createTaskRequest.getTitle());
-        task.setDescription(createTaskRequest.getDescription());
-        task.setStatus(TaskStatus.OPEN);
-        task.setTaskPriority(TaskPriority.LOW);
         TaskList taskList = taskListRepository.findById(createTaskRequest.getTask_list_id())
                                     .orElseThrow(() -> new IllegalArgumentException("Task List not found"));
+        Task task = Task.builder()
+                .title(createTaskRequest.getTitle())
+                .description(createTaskRequest.getDescription())
+                .status(TaskStatus.OPEN)
+                .taskPriority(TaskPriority.LOW)
+                .tasks(taskList)
+                .build();
         task.setTasks(taskList);
         return taskRepository.save(task);
     }
