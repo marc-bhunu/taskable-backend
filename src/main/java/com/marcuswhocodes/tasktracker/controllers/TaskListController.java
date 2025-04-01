@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/tasks-list")
@@ -36,6 +37,12 @@ public class TaskListController {
         TaskList taskList = taskListService.createTaskList(createTaskListRequest);
         TaskListResponseDto taskListResponseDto = taskMapper.toDto(taskList);
         return new ResponseEntity<>(taskListResponseDto, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTaskList(@PathVariable UUID id) {
+        taskListService.deleteTaskList(id);
+        return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 

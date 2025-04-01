@@ -28,7 +28,7 @@ public class TaskList {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "tasks")
+    @OneToMany(mappedBy = "tasks",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks = new ArrayList<>();
 
     @Override
