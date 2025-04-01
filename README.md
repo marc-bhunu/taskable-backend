@@ -57,7 +57,6 @@ Create Task
 POST /api/v1/task
 Request Body:
 
-
 {
     "title": "New Task",
     "description": "This is a new task description",
@@ -72,7 +71,6 @@ Update Task
 PUT /api/v1/task/{id}
 Request Body:
 
-
 {
     "title": "Updated Task",
     "description": "This is an updated task description",
@@ -82,20 +80,15 @@ Request Body:
     "taskPriority": "MEDIUM"
 }
 Delete Task
-
-
 DELETE /api/v1/task/{id}
 Get Tasks by Task List ID
-
 
 GET /api/v1/task/{taskListId}
 Task List Endpoints
 Create Task List
 
-
 POST /api/v1/tasks-list
 Request Body:
-
 
 {
     "name": "New Task List"
