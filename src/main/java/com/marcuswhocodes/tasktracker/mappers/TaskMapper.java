@@ -2,6 +2,7 @@ package com.marcuswhocodes.tasktracker.mappers;
 
 import com.marcuswhocodes.tasktracker.domain.CreateTaskListRequest;
 import com.marcuswhocodes.tasktracker.domain.CreateTaskRequest;
+import com.marcuswhocodes.tasktracker.domain.UpdateTaskListRequest;
 import com.marcuswhocodes.tasktracker.domain.UpdateTaskRequest;
 import com.marcuswhocodes.tasktracker.domain.dtos.*;
 import com.marcuswhocodes.tasktracker.domain.entities.Task;
@@ -16,5 +17,6 @@ public interface TaskMapper {
     CreateTaskListRequest toCreateTaskListRequest(CreateTaskListRequestDto createTaskListRequestDto);
     TaskResponseDto toTaskResponseDto(Task task);
     UpdateTaskRequest toUpdateTaskRequest(UpdateTaskRequestDto updateTaskRequestDto);
+    UpdateTaskListRequest toUpdateTaskListRequest(UpdateTaskListRequestDto updateTaskListRequestDto);
 
 }
