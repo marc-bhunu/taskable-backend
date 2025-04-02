@@ -29,7 +29,7 @@ Task Tracker is a Spring Boot application for managing tasks and task lists. It 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/marc-bhunu/task-tracker.git
+    git https://github.com/marc-bhunu/taskable-backend.git
     cd task-tracker
     ```
 
